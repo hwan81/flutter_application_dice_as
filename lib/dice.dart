@@ -8,5 +8,13 @@ class Dice {
     }
   }
 
-  void shake() {}
+  void shake() {
+    dice.shuffle();
+  }
+
+  int pick() {
+    int res = dice.first;
+    dice.removeAt(0);
+    return res;
+  }
 }
