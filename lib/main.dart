@@ -16,22 +16,21 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Dice dice = Dice(size: 100);
+  late Timer timer;
+  int resultNum = 0;
+
+  void start() {
+    timer = Timer.periodic(const Duration(milliseconds: 10), (timer) {
+      dice.shake();
+      print(dice.dice[0]);
+      setState(() {
+        resultNum = dice.dice[0];
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    late Timer timer;
-    int resultNum = 0;
-
-    void start() {
-      timer = Timer.periodic(const Duration(milliseconds: 100), (timer) {
-        dice.shake();
-        print(dice.dice[0]);
-        setState(() {
-          resultNum = dice.dice[0];
-        });
-      });
-    }
-
     return MaterialApp(
       home: Scaffold(
         body: Column(
