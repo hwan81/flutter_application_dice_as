@@ -1,0 +1,12 @@
+class Dice {
+  final int size;
+  late List<int> dice = [];
+
+  Dice({required this.size}) {
+    for (int i = 1; i <= size; i++) {
+      dice.add(i);
+    }
+  }
+
+  void shake() {}
+}
